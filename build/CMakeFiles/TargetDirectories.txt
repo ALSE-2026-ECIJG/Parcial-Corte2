@@ -1,3 +1,0 @@
-/home/geraldine/parcial_corte2/build/CMakeFiles/RegistroAcademicoProyecto.dir
-/home/geraldine/parcial_corte2/build/CMakeFiles/edit_cache.dir
-/home/geraldine/parcial_corte2/build/CMakeFiles/rebuild_cache.dir
