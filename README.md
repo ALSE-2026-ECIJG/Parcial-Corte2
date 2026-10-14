@@ -89,3 +89,55 @@ En el cuadro de respuesta de esta pregunta, escriba:
 ## Resumen
 
 Este proyecto busca demostrar la capacidad de crear una aplicación en C++ con una estructura profesional, usando programación orientada a objetos, buenas prácticas de diseño, documentación técnica y organización de proyecto.
+
+
+---
+
+# Implementación - Samuel Lopez
+
+## Descripción
+Sistema de gestión de paneles solares que registra lecturas de
+generación en Wh y calcula la eficiencia promedio por panel.
+
+## Estructura del proyecto
+```
+Parcial-Corte2/
+├── CMakeLists.txt
+├── Doxyfile
+├── README.md
+├── include/PanelSolar.h
+├── src/PanelSolar.cpp
+├── src/main.cpp
+└── docs/
+```
+
+## Compilación y ejecución
+```bash
+mkdir build && cd build
+cmake ..
+make
+./app
+```
+
+## Ejemplo de ejecución
+```
+¿Cuántos paneles desea registrar? 2
+--- Panel #1 ---
+ID del panel: P-001
+Eficiencia (0-100): 85
+--- Panel #2 ---
+ID del panel: P-002
+Eficiencia (0-100): 92
+...
+>>> Energía total del sistema: 940 Wh
+>>> Panel más productivo: P-002 (540 Wh)
+```
+
+## Documentación
+```bash
+doxygen Doxyfile
+xdg-open docs/html/index.html
+```
+
+## Autor
+Samuel Lopez - GitHub: [@Samuellop](https://github.com/Samuellop)

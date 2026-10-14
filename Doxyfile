@@ -1,0 +1,9 @@
+PROJECT_NAME           = "Parcial Corte 2 - Samuel Lopez"
+PROJECT_BRIEF          = "Sistema de gestion de paneles solares"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = include src
+RECURSIVE              = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
