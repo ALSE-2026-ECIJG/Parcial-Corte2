@@ -1,87 +1,91 @@
-Proyecto Sensores
-Descripción
+# Parcial - Corte 2
 
-Aplicación desarrollada en C++ para administrar sensores y registrar sus mediciones. El programa permite crear sensores, consultar su información, actualizar mediciones y activar o desactivar sensores.
-Funcionalidades
+## Descripción del proyecto
 
-    Crear y almacenar dos sensores.
-    Registrar nuevas mediciones ingresadas por el usuario.
-    Validar identificadores, nombres, tipos y valores numéricos.
-    Actualizar mediciones únicamente cuando el sensor está activo.
-    Consultar la información y el estado de cada sensor.
-    Mostrar los resultados por consola.
+Proyecto final del parcial: implementación completa y aplicación de la clase diseñada.
 
-Tecnologías utilizadas
+Desarrolle un proyecto completo en C++ basado en la clase realizada en el punto 3 del parcial. Este proyecto debe implementarse en el entorno local y subirse a un repositorio público en GitHub. El objetivo es demostrar dominio en:
 
-    C++
-    STL (std::vector)
-    CMake
-    Doxygen
-    Git y GitHub
+- Diseño orientado a objetos
+- Implementación de clases en archivos `.h` y `.cpp`
+- Uso de contenedores de la STL
+- Organización de proyectos con CMake
+- Documentación con Doxygen
+- Construcción de un programa principal funcional
 
-Estructura del proyecto
+---
 
-Proyecto_Sensores/
-├── include/
-│   └── Sensor.h
-├── src/
-│   ├── Sensor.cpp
-│   └── main.cpp
-├── docs/
-│   └── html/
-│       └── index.html
+## 1. Implementación de la clase
+
+Implemente completamente la clase diseñada, incluyendo:
+
+- Archivo de cabecera (`.h`) con atributos, métodos y documentación Doxygen
+- Archivo `.cpp` con la implementación de todos los métodos
+- Validaciones necesarias según el contexto de la clase
+- Uso adecuado de encapsulación y tipos de datos
+
+---
+
+## 2. Programa principal (`main.cpp`)
+
+La aplicación debe:
+
+- Crear al menos dos objetos de la clase
+- Almacenar los objetos en un contenedor de la STL
+- Solicitar datos al usuario mediante `cin`
+- Invocar los métodos de la clase según el contexto
+- Mostrar resultados claros usando `cout`
+- Simular un proceso coherente con el tipo de clase (sensores, paquetes, registros académicos, etc.)
+
+---
+
+## 3. Organización del proyecto
+
+El proyecto debe seguir la siguiente estructura:
+
+```text
+Proyecto/
 ├── CMakeLists.txt
-├── Doxyfile
-└── README.md
+├── include/
+│   └── SuClase.h
+├── src/
+│   ├── SuClase.cpp
+│   └── main.cpp
+└── docs/
+    └── (documentación generada por Doxygen)
+```
 
-Requisitos
+---
 
-    Compilador de C++ compatible.
-    CMake.
-    Doxygen para regenerar la documentación.
+## 4. Documentación con Doxygen
 
-Compilación
+Incluya:
 
-Desde la carpeta raíz del proyecto, ejecutar:
+- Comentarios Doxygen en la clase y sus métodos
+- Un archivo `Doxyfile`
+- Documentación generada en HTML dentro de la carpeta `docs/`
 
-cmake -S . -B build
-cmake --build build
+---
 
-Ejecución
+## 5. GitHub
 
-En Ubuntu, ejecutar:
+El repositorio debe contener:
 
-./build/ProyectoSensores
+- Todo el código fuente
+- El archivo `CMakeLists.txt`
+- La documentación generada
+- Un archivo `README.md` con la descripción del proyecto, instrucciones de compilación y ejemplos de ejecución
 
-El programa solicitará una nueva medición para cada sensor y mostrará la información actualizada al finalizar.
-Ejemplo de uso
+---
 
-=== SISTEMA DE REGISTRO DE SENSORES ===
-Se han creado dos sensores.
+## 6. Entrega en Moodle
 
-Sensor: Sensor de temperatura
-Ingrese la nueva medicion: 23
-Medicion actualizada correctamente.
+En el cuadro de respuesta de esta pregunta, escriba:
 
-Sensor: Sensor de humedad
-Ingrese la nueva medicion: 12
-Medicion actualizada correctamente.
+- Perfil de GitHub
 
-=== INFORMACION FINAL ===
-ID: 1
-Nombre: Sensor de temperatura
-Tipo: Temperatura
-Medicion: 23.00
-Estado: Activo
+---
 
-Las mediciones mostradas son un ejemplo; los resultados dependen de los valores ingresados.
-Documentación
+## Resumen
 
-La documentación del código se genera con Doxygen utilizando:
-
-doxygen Doxyfile
-
-El archivo HTML principal se encuentra en docs/html/index.html.
-Autor
-
-JulianAGF
+Este proyecto busca demostrar la capacidad de crear una aplicación en C++ con una estructura profesional, usando programación orienta
