@@ -1,5 +1,6 @@
 #include "Sensor.h"
 
+#include <cmath>
 #include <iomanip>
 #include <iostream>
 #include <stdexcept>
@@ -9,13 +10,22 @@ Sensor::Sensor(int id, const std::string& nombre,
 const std::string& tipo, double valor)
 : id(id), nombre(nombre), tipo(tipo),
 valor(valor), activo(true) {
+
 if (id <= 0) {
-throw std::invalid_argument("El ID debe ser positivo.");
+throw std::invalid_argument(
+"El ID debe ser positivo."
+);
 }
 
 if (nombre.empty() || tipo.empty()) {
 throw std::invalid_argument(
 "El nombre y el tipo no pueden estar vacios."
+);
+}
+
+if (!std::isfinite(valor)) {
+throw std::invalid_argument(
+"La medicion inicial debe ser un numero finito."
 );
 }
 }
@@ -41,7 +51,7 @@ return activo;
 }
 
 bool Sensor::actualizarMedicion(double nuevoValor) {
-if (!activo) {
+if (!activo || !std::isfinite(nuevoValor)) {
 return false;
 }
 
@@ -67,3 +77,5 @@ std::cout << "Estado: "
 << (activo ? "Activo" : "Inactivo") << '\n';
 std::cout << "-------------------------\n";
 }
+
+
