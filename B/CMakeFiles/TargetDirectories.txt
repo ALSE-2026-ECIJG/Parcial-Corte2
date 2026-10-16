@@ -1,0 +1,3 @@
+/workspaces/proyectp/B/CMakeFiles/app_sensores.dir
+/workspaces/proyectp/B/CMakeFiles/edit_cache.dir
+/workspaces/proyectp/B/CMakeFiles/rebuild_cache.dir

@@ -1,63 +1,44 @@
+
+/**
+ * @file Sensor.h
+ * @brief Definición de la clase Sensor para el sistema de prevención.
+ */
+
 #ifndef SENSOR_H
 #define SENSOR_H
-
 #include <string>
 
 /**
-* @brief Representa un sensor de medicion.
-*
-* Almacena la identificacion, el nombre, el tipo,
-* la ultima medicion y el estado del sensor.
-*/
+ * @class Sensor
+ * @brief Representa un sensor genérico que mide variables ambientales.
+ */
 class Sensor {
-private:
-int id;
-std::string nombre;
-std::string tipo;
-double valor;
-bool activo;
-
 public:
-/**
-* @brief Construye un sensor.
-* @param id Identificador unico y positivo.
-* @param nombre Nombre del sensor.
-* @param tipo Tipo de sensor.
-* @param valor Medicion inicial.
-*/
-Sensor(int id, const std::string& nombre,
-const std::string& tipo, double valor);
+    int id;                     /**< Identificador único del sensor */
+    std::string tipo;           /**< Tipo de sensor (Humo, Gas, etc.) */
+    std::string ubicacion;      /**< Lugar donde está instalado el sensor */
+    float valorActual;          /**< Último valor registrado por el sensor */
 
-/** @brief Devuelve el identificador del sensor. */
-int getId() const;
+    /**
+     * @brief Constructor de la clase Sensor.
+     * @param id_sensor ID del sensor.
+     * @param tipo_sensor Tipo de variable que mide.
+     * @param ubicacion_sensor Lugar de instalación.
+     */
+    Sensor(int id_sensor, std::string tipo_sensor, std::string ubicacion_sensor);
+    
+    /**
+     * @brief Registra una nueva medición en el sensor.
+     * @param nuevoValor El valor medido en tiempo real.
+     */
+    void registrarMedida(float nuevoValor);
 
-/** @brief Devuelve el nombre del sensor. */
-std::string getNombre() const;
-
-/** @brief Devuelve el tipo de sensor. */
-std::string getTipo() const;
-
-/** @brief Devuelve la ultima medicion. */
-double getValor() const;
-
-/** @brief Indica si el sensor esta activo. */
-bool estaActivo() const;
-
-/**
-* @brief Actualiza la medicion del sensor.
-* @param nuevoValor Nueva medicion.
-* @return true si se actualizo correctamente.
-*/
-bool actualizarMedicion(double nuevoValor);
-
-/** @brief Activa el sensor. */
-void activar();
-
-/** @brief Desactiva el sensor. */
-void desactivar();
-
-/** @brief Muestra toda la informacion del sensor. */
-void mostrarInformacion() const;
+    /**
+     * @brief Evalúa si el valor actual supera el límite seguro.
+     * @param umbralMaximo Valor máximo permitido antes de lanzar alerta.
+     * @return true si hay peligro, false si los niveles son normales.
+     */
+    bool detectarPeligro(float umbralMaximo);
 };
 
 #endif
