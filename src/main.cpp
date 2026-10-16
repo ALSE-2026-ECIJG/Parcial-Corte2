@@ -1,53 +1,32 @@
-#include "Sensor.h"
-
 #include <iostream>
-#include <limits>
 #include <vector>
+#include "../include/Sensor.h"
+
+using namespace std;
 
 int main() {
-std::vector<Sensor> sensores;
+    vector<Sensor> listaSensores;
 
-try {
-sensores.emplace_back(1, "Sensor de temperatura",
-"Temperatura", 25.0);
-sensores.emplace_back(2, "Sensor de humedad",
-"Humedad", 60.0);
-} catch (const std::exception& e) {
-std::cerr << "Error al crear sensores: "
-<< e.what() << '\n';
-return 1;
-}
+    listaSensores.push_back(Sensor(1, "Humo", "Cocina"));
+    listaSensores.push_back(Sensor(2, "Gas GLP", "Sótano"));
+    listaSensores.push_back(Sensor(3, "Temperatura", "Sala Principal"));
+    listaSensores.push_back(Sensor(4, "Fuego", "Habitaciones"));
+    listaSensores.push_back(Sensor(5, "Humedad", "Techo"));
 
-std::cout << "=== SISTEMA DE REGISTRO DE SENSORES ===\n";
-std::cout << "Se han creado dos sensores.\n\n";
+    cout << "=== SISTEMA DE PREVENCION INICIADO ===" << endl;
+    cout << "Sensores registrados: " << listaSensores.size() << endl << endl;
 
-for (Sensor& sensor : sensores) {
-std::cout << "Sensor: " << sensor.getNombre() << '\n';
-std::cout << "Ingrese la nueva medicion: ";
+    listaSensores[0].registrarMedida(45.5);
+    listaSensores[2].registrarMedida(24.0);
+    listaSensores[1].registrarMedida(80.2);
+    cout << endl;
 
-double medicion;
+    if (listaSensores[0].detectarPeligro(40.0)) {
+        cout << "¡ALERTA ROJA! Niveles altos de humo." << endl;
+    }
+    if (listaSensores[1].detectarPeligro(50.0)) {
+        cout << "¡ALERTA ROJA! Fuga de gas inminente." << endl;
+    }
 
-if (!(std::cin >> medicion)) {
-std::cerr << "Error: debe ingresar un numero.\n";
-return 1;
-}
-
-if (!sensor.actualizarMedicion(medicion)) {
-std::cout << "No se pudo actualizar la medicion.\n";
-} else {
-std::cout << "Medicion actualizada correctamente.\n";
-}
-
-std::cout << '\n';
-}
-
-std::cout << "\n=== INFORMACION FINAL ===\n";
-
-for (const Sensor& sensor : sensores) {
-sensor.mostrarInformacion();
-}
-
-std::cout << "Total de sensores: " << sensores.size() << '\n';
-
-return 0;
+    return 0;
 }

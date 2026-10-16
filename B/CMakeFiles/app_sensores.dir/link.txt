@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/app_sensores.dir/src/main.cpp.o CMakeFiles/app_sensores.dir/src/Sensor.cpp.o -o app_sensores 

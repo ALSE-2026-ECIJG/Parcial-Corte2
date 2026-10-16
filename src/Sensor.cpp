@@ -1,69 +1,20 @@
-#include "Sensor.h"
-
-#include <iomanip>
+#include "../include/Sensor.h"
 #include <iostream>
-#include <stdexcept>
-#include <utility>
 
-Sensor::Sensor(int id, const std::string& nombre,
-const std::string& tipo, double valor)
-: id(id), nombre(nombre), tipo(tipo),
-valor(valor), activo(true) {
-if (id <= 0) {
-throw std::invalid_argument("El ID debe ser positivo.");
+using namespace std;
+
+Sensor::Sensor(int id_sensor, string tipo_sensor, string ubicacion_sensor) {
+    id = id_sensor;
+    tipo = tipo_sensor;
+    ubicacion = ubicacion_sensor;
+    valorActual = 0.0;
 }
 
-if (nombre.empty() || tipo.empty()) {
-throw std::invalid_argument(
-"El nombre y el tipo no pueden estar vacios."
-);
-}
+void Sensor::registrarMedida(float nuevoValor) {
+    valorActual = nuevoValor;
+    cout << "- Sensor de " << tipo << " en " << ubicacion << " registró: " << valorActual << endl;
 }
 
-int Sensor::getId() const {
-return id;
-}
-
-std::string Sensor::getNombre() const {
-return nombre;
-}
-
-std::string Sensor::getTipo() const {
-return tipo;
-}
-
-double Sensor::getValor() const {
-return valor;
-}
-
-bool Sensor::estaActivo() const {
-return activo;
-}
-
-bool Sensor::actualizarMedicion(double nuevoValor) {
-if (!activo) {
-return false;
-}
-
-valor = nuevoValor;
-return true;
-}
-
-void Sensor::activar() {
-activo = true;
-}
-
-void Sensor::desactivar() {
-activo = false;
-}
-
-void Sensor::mostrarInformacion() const {
-std::cout << std::fixed << std::setprecision(2);
-std::cout << "ID: " << id << '\n';
-std::cout << "Nombre: " << nombre << '\n';
-std::cout << "Tipo: " << tipo << '\n';
-std::cout << "Medicion: " << valor << '\n';
-std::cout << "Estado: "
-<< (activo ? "Activo" : "Inactivo") << '\n';
-std::cout << "-------------------------\n";
+bool Sensor::detectarPeligro(float umbralMaximo) {
+    return valorActual > umbralMaximo;
 }
