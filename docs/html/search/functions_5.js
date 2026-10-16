@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sensor_33',['Sensor',['../classSensor.html#a3afbb4b42540a26b3103c27c236803ae',1,'Sensor']]]
+  ['panelsolar_47',['PanelSolar',['../classPanelSolar.html#ae3e13f895bbf57666815708b747db3eb',1,'PanelSolar']]]
 ];
