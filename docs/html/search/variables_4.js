@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['valor_38',['valor',['../classSensor.html#a3ddc17aaf50c49001de243bcdcbfb2cb',1,'Sensor']]]
+  ['nombre_55',['nombre',['../classSensor.html#ab008a07c28c7ff819d23bd2d4907f14b',1,'Sensor']]]
 ];

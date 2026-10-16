@@ -1,53 +1,59 @@
-#include "Sensor.h"
-
 #include <iostream>
-#include <limits>
 #include <vector>
+#include "PanelSolar.h"
 
 int main() {
-std::vector<Sensor> sensores;
+    std::vector<PanelSolar> granjaSolar;
 
-try {
-sensores.emplace_back(1, "Sensor de temperatura",
-"Temperatura", 25.0);
-sensores.emplace_back(2, "Sensor de humedad",
-"Humedad", 60.0);
-} catch (const std::exception& e) {
-std::cerr << "Error al crear sensores: "
-<< e.what() << '\n';
-return 1;
-}
+    granjaSolar.push_back(PanelSolar("PS-001", 18.5f));
+    granjaSolar.push_back(PanelSolar("PS-002", 20.1f));
 
-std::cout << "=== SISTEMA DE REGISTRO DE SENSORES ===\n";
-std::cout << "Se han creado dos sensores.\n\n";
+    int opcion = 0;
+    do {
+        std::cout << "\n========================================\n";
+        std::cout << "   SISTEMA DE MONITOREO DE PANALES SOLARES\n";
+        std::cout << "========================================\n";
+        std::cout << "1. Registrar generacion de energia en un panel\n";
+        std::cout << "2. Mostrar reporte y energia total generada\n";
+        std::cout << "3. Salir\n";
+        std::cout << "Seleccione una opcion: ";
+        std::cin >> opcion;
 
-for (Sensor& sensor : sensores) {
-std::cout << "Sensor: " << sensor.getNombre() << '\n';
-std::cout << "Ingrese la nueva medicion: ";
+        if (opcion == 1) {
+            std::string idBuscado;
+            float energia;
+            std::cout << "Ingrese el ID del panel (ej. PS-001, PS-002): ";
+            std::cin >> idBuscado;
+            std::cout << "Ingrese los Wh generados: ";
+            std::cin >> energia;
 
-double medicion;
+            bool encontrado = false;
+            for (auto& panel : granjaSolar) {
+                if (panel.getId() == idBuscado) {
+                    try {
+                        panel.registrarGeneracion(energia);
+                        std::cout << ">> ¡Generacion registrada con exito!\n";
+                    } catch (const std::exception& e) {
+                        std::cout << ">> Error: " << e.what() << "\n";
+                    }
+                    encontrado = true;
+                    break;
+                }
+            }
+            if (!encontrado) {
+                std::cout << ">> Error: Panel no encontrado en el sistema.\n";
+            }
 
-if (!(std::cin >> medicion)) {
-std::cerr << "Error: debe ingresar un numero.\n";
-return 1;
-}
+        } else if (opcion == 2) {
+            std::cout << "\n--- REPORTE GENERAL DE LA GRANJA SOLAR ---\n";
+            for (const auto& panel : granjaSolar) {
+                std::cout << "Panel ID: " << panel.getId() << "\n"
+                          << "  - Eficiencia: " << panel.eficienciaPromedio() << "%\n"
+                          << "  - Energia Total Generada: " << panel.energiaTotal() << " Wh\n";
+            }
+        }
+    } while (opcion != 3);
 
-if (!sensor.actualizarMedicion(medicion)) {
-std::cout << "No se pudo actualizar la medicion.\n";
-} else {
-std::cout << "Medicion actualizada correctamente.\n";
-}
-
-std::cout << '\n';
-}
-
-std::cout << "\n=== INFORMACION FINAL ===\n";
-
-for (const Sensor& sensor : sensores) {
-sensor.mostrarInformacion();
-}
-
-std::cout << "Total de sensores: " << sensores.size() << '\n';
-
-return 0;
+    std::cout << "Saliendo del sistema de monitoreo...\n";
+    return 0;
 }

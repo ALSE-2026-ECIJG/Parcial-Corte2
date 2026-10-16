@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sensor_2ecpp_21',['Sensor.cpp',['../Sensor_8cpp.html',1,'']]],
-  ['sensor_2eh_22',['Sensor.h',['../Sensor_8h.html',1,'']]]
+  ['panelsolar_2ecpp_31',['PanelSolar.cpp',['../PanelSolar_8cpp.html',1,'']]],
+  ['panelsolar_2eh_32',['PanelSolar.h',['../PanelSolar_8h.html',1,'']]]
 ];
