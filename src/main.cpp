@@ -1,53 +1,86 @@
-#include "Sensor.h"
-
+/**
+ * @file main.cpp
+ * @brief Simula el proceso de registro de notas de varios estudiantes.
+ */
+#include "RegistroAcademico.h"
 #include <iostream>
+#include <iomanip>
 #include <limits>
 #include <vector>
 
+/** @brief Lee un entero hasta que el usuario ingrese uno válido (>= minimo). */
+static int leerEntero(const std::string& mensaje, int minimo) {
+    int valor;
+    while (true) {
+        std::cout << mensaje;
+        if (std::cin >> valor && valor >= minimo) return valor;
+        std::cout << "  Entrada invalida (minimo " << minimo << ").\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+}
+
+/** @brief Lee un float hasta que el usuario ingrese uno válido. */
+static float leerFloat(const std::string& mensaje) {
+    float valor;
+    while (true) {
+        std::cout << mensaje;
+        if (std::cin >> valor) return valor;
+        std::cout << "  Entrada invalida.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+}
+
 int main() {
-std::vector<Sensor> sensores;
+    std::vector<RegistroAcademico> estudiantes;
 
-try {
-sensores.emplace_back(1, "Sensor de temperatura",
-"Temperatura", 25.0);
-sensores.emplace_back(2, "Sensor de humedad",
-"Humedad", 60.0);
-} catch (const std::exception& e) {
-std::cerr << "Error al crear sensores: "
-<< e.what() << '\n';
-return 1;
-}
+    std::cout << "=== SISTEMA DE REGISTRO ACADEMICO ===\n";
+    int cantidad = leerEntero("Cuantos estudiantes desea registrar (minimo 2)? ", 2);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-std::cout << "=== SISTEMA DE REGISTRO DE SENSORES ===\n";
-std::cout << "Se han creado dos sensores.\n\n";
+    for (int i = 0; i < cantidad; ++i) {
+        std::string nombre;
+        std::cout << "\n--- Estudiante " << (i + 1) << " ---\n";
+        while (true) {
+            std::cout << "Nombre: ";
+            std::getline(std::cin, nombre);
+            try {
+                estudiantes.emplace_back(nombre);
+                break;
+            } catch (const std::invalid_argument& e) {
+                std::cout << "  Error: " << e.what() << "\n";
+            }
+        }
 
-for (Sensor& sensor : sensores) {
-std::cout << "Sensor: " << sensor.getNombre() << '\n';
-std::cout << "Ingrese la nueva medicion: ";
+        int numMaterias = leerEntero("Cuantas materias va a registrar? ", 1);
+        RegistroAcademico& actual = estudiantes.back();
+        for (int m = 1; m <= numMaterias; ++m) {
+            bool registrada = false;
+            while (!registrada) {
+                float nota = leerFloat("  Nota materia " + std::to_string(m) + " (0.0 - 5.0): ");
+                int creditos = leerEntero("  Creditos materia " + std::to_string(m) + ": ", 1);
+                try {
+                    actual.registrarNota(nota, creditos);
+                    registrada = true;
+                } catch (const std::invalid_argument& e) {
+                    std::cout << "  Error: " << e.what() << " Intente de nuevo.\n";
+                }
+            }
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
 
-double medicion;
+    int requeridos = leerEntero("\nCreditos requeridos para cumplir el requisito: ", 1);
 
-if (!(std::cin >> medicion)) {
-std::cerr << "Error: debe ingresar un numero.\n";
-return 1;
-}
-
-if (!sensor.actualizarMedicion(medicion)) {
-std::cout << "No se pudo actualizar la medicion.\n";
-} else {
-std::cout << "Medicion actualizada correctamente.\n";
-}
-
-std::cout << '\n';
-}
-
-std::cout << "\n=== INFORMACION FINAL ===\n";
-
-for (const Sensor& sensor : sensores) {
-sensor.mostrarInformacion();
-}
-
-std::cout << "Total de sensores: " << sensores.size() << '\n';
-
-return 0;
+    std::cout << "\n=== RESULTADOS ===\n" << std::fixed << std::setprecision(2);
+    for (const auto& est : estudiantes) {
+        std::cout << "Estudiante: " << est.getNombre() << "\n"
+                  << "  Materias registradas: " << est.getCantidadNotas() << "\n"
+                  << "  Creditos aprobados:   " << est.getCreditosAprobados() << "\n"
+                  << "  Promedio ponderado:   " << est.obtenerPromedio() << "\n"
+                  << "  Cumple requisitos:    "
+                  << (est.cumpleRequisitos(requeridos) ? "SI" : "NO") << "\n\n";
+    }
+    return 0;
 }
