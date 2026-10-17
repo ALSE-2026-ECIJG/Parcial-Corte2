@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nombre_36',['nombre',['../classSensor.html#ab008a07c28c7ff819d23bd2d4907f14b',1,'Sensor']]]
+  ['saldo_0',['saldo',['../classClienteBancario.html#a3d5fdcc1374dbfa410bbb5de9c1ef65c',1,'ClienteBancario']]]
 ];

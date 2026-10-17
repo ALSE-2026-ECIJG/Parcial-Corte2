@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tipo_17',['tipo',['../classSensor.html#aa3c16e79dc51409abd1f44895b77bec6',1,'Sensor']]]
+  ['transacciones_0',['transacciones',['../classClienteBancario.html#a89ca64ea5185f8470f3496b7b9833455',1,'ClienteBancario']]]
 ];

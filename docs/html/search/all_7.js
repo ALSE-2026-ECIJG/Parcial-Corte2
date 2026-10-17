@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['sensor_14',['Sensor',['../classSensor.html',1,'Sensor'],['../classSensor.html#a3afbb4b42540a26b3103c27c236803ae',1,'Sensor::Sensor()']]],
-  ['sensor_2ecpp_15',['Sensor.cpp',['../Sensor_8cpp.html',1,'']]],
-  ['sensor_2eh_16',['Sensor.h',['../Sensor_8h.html',1,'']]]
+  ['saldo_0',['saldo',['../classClienteBancario.html#a3d5fdcc1374dbfa410bbb5de9c1ef65c',1,'ClienteBancario']]]
 ];

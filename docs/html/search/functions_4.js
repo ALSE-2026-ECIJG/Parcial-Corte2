@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_31',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['mostrarinformacion_32',['mostrarInformacion',['../classSensor.html#a6df72b34c421093b8cb6c73d90d34785',1,'Sensor']]]
+  ['promediotransacciones_0',['promedioTransacciones',['../classClienteBancario.html#adab72b7455955db44d55ada62af4176b',1,'ClienteBancario']]]
 ];

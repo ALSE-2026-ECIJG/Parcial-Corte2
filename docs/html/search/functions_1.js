@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['desactivar_25',['desactivar',['../classSensor.html#a1beccbb600c6618b6ccd503091e06738',1,'Sensor']]]
+  ['depositar_0',['depositar',['../classClienteBancario.html#ae38d151aaa290de1b592badb9bc014c1',1,'ClienteBancario']]]
 ];

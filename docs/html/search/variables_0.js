@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['activo_34',['activo',['../classSensor.html#a4b33332ed4289625dc1ee6e899de6063',1,'Sensor']]]
+  ['cedula_0',['cedula',['../classClienteBancario.html#a9b7d8969acefb45de997e652bdb36f4c',1,'ClienteBancario']]]
 ];
