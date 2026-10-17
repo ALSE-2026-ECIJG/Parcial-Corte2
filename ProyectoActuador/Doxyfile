@@ -1,0 +1,16 @@
+PROJECT_NAME           = "ProyectoActuador"
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = "Proyecto final de C++: clase actuador"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = English
+INPUT                  = include src README.md
+FILE_PATTERNS          = *.h *.cpp *.md
+USE_MDFILE_AS_MAINPAGE = README.md
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+GENERATE_HTML          = YES
+HTML_OUTPUT            = .
+GENERATE_LATEX         = NO
+HAVE_DOT               = NO
+GENERATE_TREEVIEW      = NO
+SEARCHENGINE           = NO
